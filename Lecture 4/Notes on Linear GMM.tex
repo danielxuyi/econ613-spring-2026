@@ -1,0 +1,34 @@
+
+\documentclass[11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{beamerarticle}
+\usepackage{fullpage}
+\usepackage{pgf}
+\usepackage{hyperref}
+\usepackage{graphics}
+
+\setcounter{MaxMatrixCols}{10}
+
+\mode<article> {
+}
+\mode<article> {}
+\oddsidemargin 0in \textwidth 6.25in
+\topmargin -0in \textheight 8.25in
+\begin{document}
+
+\setlength{\baselineskip}{1.5\baselineskip}
+\textbf{Note of Linear GMM}\\
+
+We warm up by stating two simple propositions of derivatives with Matrix algebra: \\
+(1) For vector $x$, $\frac{\partial A'x}{\partial x} = \frac{\partial x'A}{\partial x}= A' $\\
+(2). If $A$ is not a function of $x$ and $A$ is symmetric, then $\frac{\partial x' A x}{\partial x} = 2 x' A $.\\
+
+Now we visit our linear GMM objective function, which is $(Z'Y)'W(Z'Y) + b'(Z'X)'W(Z'X)b - (Z'Y)'W(Z'X)b-b'(Z'X)'W(Z'Y)$.\\
+
+Apply propositions (1) and (2), we have the first order condition as
+\begin{eqnarray*}
+2b'[(Z'X)'W(Z'X)] - 2[(Z'Y)'W(Z'X)]=0
+\end{eqnarray*}
+Thus $b'= [(Z'X)'W(Z'X)]^{-1}[(Z'Y)'W(Z'X)]$, which implies that $b^{*} =  [(Z'X)'W(Z'X)]^{-1}[(Z'X)'W(Z'Y)]$
+\end{document} 

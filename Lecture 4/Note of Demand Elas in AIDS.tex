@@ -1,0 +1,63 @@
+
+\documentclass[11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{beamerarticle}
+\usepackage{fullpage}
+\usepackage{pgf}
+\usepackage{hyperref}
+\usepackage{graphics}
+
+\setcounter{MaxMatrixCols}{10}
+
+\mode<article> {
+}
+\mode<article> {}
+\oddsidemargin 0in \textwidth 6.25in
+\topmargin -0in \textheight 8.25in
+\begin{document}
+
+\setlength{\baselineskip}{1.5\baselineskip}
+\textbf{Note of Demand Elasticities}\\
+
+Recall that we have the following share equations from AIDS 
+\begin{eqnarray}
+\omega_i = \alpha_i + \sum_{j} \gamma_{ij}lnp_j +\beta_i ln(\frac{X}{P}), \forall i \\
+lnP=\alpha_0 + \sum_{j}\alpha_j lnp_j + \frac{1}{2}\sum_i\sum_j \gamma_{ij} lnp_i lnp_j
+\end{eqnarray}
+and if we use Stone approximation
+\begin{eqnarray}
+ln\tilde{P}=\sum_{k}\omega_k lnp_k
+\end{eqnarray}
+
+We first show that $\frac{d\omega_i}{dlnp_j}$ is connected to demand elasticities $\frac{dlnq_i}{dlnp_j}$.\\
+If $i = j$, i.e., we are interested in own elasticity, then
+\begin{eqnarray}
+\frac{d\omega_i}{dlnp_j}=\frac{d(p_iq_i)}{dlnp_i}\cdot\frac{1}{X}=[p_iq_i+\frac{dq_i}{dlnp_i}p_i]/X= \frac{p_iq_i}{X}[1+\frac{dlnq_i}{dlnp_i}] \equiv \omega_i[1+\eta_{ii}]
+\end{eqnarray}
+where $\eta_{ii}$ is the own demand elasticity. \\
+If $i\neq j$, i.e., we are interested in cross elasticity, then
+\begin{eqnarray}
+\frac{d\omega_i}{dlnp_j}=\frac{d(p_iq_i)}{dlnp_j}\cdot\frac{1}{X}=[0+\frac{dq_i}{dlnp_j}p_i]/X= \frac{p_iq_i}{X}\frac{dlnq_i}{dlnp_j}\equiv \omega_i\eta_{ij}
+\end{eqnarray}
+where $\eta_{ij}$ is the cross demand elasticity.\\
+Making use of the AIDS demand system, we know that
+\begin{eqnarray}
+\frac{d\omega_i}{dlnp_j}=\gamma_{ij}-\beta_i \frac{dlnP}{dlnp_j}
+\end{eqnarray}
+Thus the bottom-line is that we have
+\begin{eqnarray}
+\eta_{ii} = -1 + [\gamma_{ii}-\beta_i \frac{dlnP}{dlnp_i}]/\omega_i\\
+\eta_{ij} = [\gamma_{ij}-\beta_i \frac{dlnP}{dlnp_j}]/\omega_i
+\end{eqnarray}
+Finally, the calculation of $\frac{dlnP}{dlnp_j}$ can either use AIDS exact price aggregation
+\begin{eqnarray}
+\frac{dlnP}{dlnp_j} = \alpha_j +\sum_{k}\gamma_{kj} lnp_k
+\end{eqnarray}
+or use Stone approximation formula (by assuming a constant expenditure share)\footnote{Alston et al (94) shows this is a pretty good approximation with Monte Carlo Simulations.}
+\begin{eqnarray}
+\frac{dlnP}{dlnp_j} = \omega_j
+\end{eqnarray}
+
+
+\end{document} 

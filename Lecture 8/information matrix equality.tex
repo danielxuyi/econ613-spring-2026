@@ -1,0 +1,68 @@
+
+\documentclass[11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{beamerarticle}
+\usepackage{fullpage}
+\usepackage{pgf}
+\usepackage{hyperref}
+\usepackage{graphics}
+
+\setcounter{MaxMatrixCols}{10}
+
+\mode<article> {
+}
+\mode<article> {}
+\oddsidemargin 0in \textwidth 6.25in
+\topmargin -0in \textheight 8.25in
+\begin{document}
+
+\setlength{\baselineskip}{1.5\baselineskip}
+\textbf{Information Matrix Equality}\\
+
+\textbf{Step 1}\\
+
+Define the score of the log likelihood as
+\begin{eqnarray*}
+s_i(\theta) \equiv \nabla_{\theta} l_i(\theta)' = [\frac{\partial l_i}{\partial \theta_1},...,\frac{\partial l_i}{\partial \theta_P}]'
+\end{eqnarray*}
+
+We now first show that
+\begin{eqnarray*}
+E[s_i(\theta)|x_i]=0 
+\end{eqnarray*}
+This is simply to apply the definition of conditional expectation operator and the fact that $l_i(\theta)= log f(y_i|x_i;\theta)$
+\begin{eqnarray*}
+E[s_i(\theta)|x_i]=\int s_i(\theta) f(y|x_i;\theta) \nu(dy)\\
+=\int \nabla_{\theta} f(y|x_i; \theta) \nu(dy) \\
+=\nabla_\theta \int f(y|x_i; \theta) \nu(dy) \\
+=0
+\end{eqnarray*}
+
+\textbf{Step 2}\\
+
+Now we are equipped to show the conditional information matrix equality. Use the fact that $E[s_i(\theta)|x_i]=0 $ and take derivative on both side.
+\begin{eqnarray*}
+\nabla_\theta E[s_i(\theta)|x_i] \equiv \nabla_\theta [\int s_i(\theta)f(y|x_i;\theta) \nu(dy)]\\
+=\int \nabla_\theta [s_i(\theta)f(y|x_i;\theta)] \nu(dy) = 0
+%-E[H_i(\theta)|x_i]=\int \nabla_{\theta}[s_i(\theta)f(y|x_i;\theta)] \nu(dy)
+\end{eqnarray*}
+Recall that $H_i(\theta)\equiv \nabla_{\theta}s_i(\theta) = \nabla^2_{\theta}l_i(\theta)$.  Thus
+ \begin{eqnarray*}
+ \nabla_\theta [s_i(\theta)f(y|x_i;\theta)] = H_i(\theta)f(y|x_i;\theta) + s_i(\theta)s_i(\theta)'f(y|x_i;\theta)
+\end{eqnarray*}
+So we have
+\begin{eqnarray*}
+\int [H_i(\theta)+ s_i(\theta)s_i(\theta)']f(y|x_i;\theta)\nu(dy) = 0 \\
+-E[H_i(\theta)|x_i]=E[s_i(\theta)s_i(\theta)'|x_i]
+\end{eqnarray*}
+
+\textbf{Step 3}\\
+
+Now we evaluate both conditional expectations at $\theta_0$, we reach the conditional information matrix equality
+\begin{eqnarray*}
+-E[H_i(\theta_0)|x_i]=E[s_i(\theta_0)s_i(\theta_0)'|x_i]
+\end{eqnarray*}
+Use the law of iterated expectations (with respect to the distribution of $x_i$), we have $A_0=B_0$. 
+
+\end{document} 
